@@ -34,6 +34,8 @@ cat3 = Category.find_or_create_by! name: 'Furniture'
 puts "Re-creating Products ..."
 
 Product.destroy_all
+Review.destroy_all
+User.destroy_all
 
 cat1.products.create!({
   name:  'Men\'s Classy shirt',
@@ -132,5 +134,54 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+# Users
+
+puts "Clearing Users"
+
+User.create!({
+  first_name: "Peter",
+  last_name: "Parker",
+  email: "imtotallynotspiderman@avengers.com",
+  password: "goblinsux"
+})
+
+User.create!({
+  first_name: "Tony",
+  last_name: "Stark",
+  email: "tony@starkenterprises.com",
+  password: "iamthegr8est"
+})
+
+# Reviews
+
+puts "Creating Reviews"
+
+Review.create!({
+  user: User.find(1),
+  product: Product.find(1),
+  rating: 4,
+  description: "Love it!"
+})
+
+Review.create!({
+  user: User.find(2),
+  product: Product.find(1),
+  rating: 5,
+  description: "This is great!"
+})
+
+Review.create!({
+  user: User.find(1),
+  product: Product.find(2),
+  rating: 2,
+  description: "Terrible!"
+})
+
+Review.create!({
+  user: User.find(2),
+  product: Product.find(2),
+  rating: 1,
+  description: "Really Bad!"
+})
 
 puts "DONE!"
