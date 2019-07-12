@@ -21,7 +21,22 @@
           <dt>Quantity</dt>
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
+          <dd class="review-box">
+            <% if current_user %>
+              <h5>Write a review:</h5>
+              <%= form_for [@product, Review.new] do |f|%>
+              <%= f.text_field :description, class:"review-input" %>
+              <p class="review-text">Leave a rating (required):</p>
+              <%= f.select :rating, ["select a rating",0,1,2,3,4,5] %>
+              <%= f.submit %>
+              <% end %>
+            <% end %>
+          </dd>
           <dd><%= @product.price %></dd>
+          <% @product.reviews.order('created_at desc').each do |review|%>
+
+            <%= render 'review', review: review %>
+          <% end %>
         </dl>
       </div>
     </div>

@@ -1,0 +1,12 @@
+<dd class="review-box">
+  <h5 class="reviewer-name"><%=review.user%></h5>
+  <p class="review-text"><%= review.description %></p>
+  <div class="rating-box">
+  <% review.rating.times {%>
+    <i class="fa fa-star"></i>
+  <% } %>
+  <% (5 - review.rating).times {%>
+    <i class="fa fa-star-o"></i>
+  <% } %>
+  </div>
+</dd>

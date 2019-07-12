@@ -8,9 +8,14 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+  post 'login', to: 'sessions#create'
   resources :users
-  
-  resources :products, only: [:index, :show]
+
+
+  resources :products, only: [:index, :show] do
+    resources :reviews, only: [:create]
+  end
+ 
   resources :categories, only: [:show]
   
   resource :cart, only: [:show] do

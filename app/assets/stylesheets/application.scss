@@ -24,3 +24,51 @@ form.button_to {
     color: #a94442;
   }
 }
+
+.review-box{
+  display: flex;
+  flex-direction: column;
+  border: solid 1px #aaa;
+  border-radius: 0.5em;
+  margin: 0.5em;
+  padding: 0.5em;
+  h5{
+    font-weight: bold;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    .review-input{
+      border: solid 0.05em #aaa;
+      border-radius: 0.2em;
+      width: 95%;
+      align-self: center;
+      padding: 0.5em;
+    }
+    input[type=submit]{
+      display: none;
+    }
+    select{
+      width: auto;
+      text-align: center;
+      background-color: #fff;
+      border: solid 0.05em #aaa;
+      border-radius: 0.2em;
+    }
+  }
+  .review-text{
+    margin-left: 2em;
+  }
+
+  .rating-box{
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+  }
+  .fa-star-o {
+    color: #aaa;
+  }
+  .fa-star {
+    color: goldenrod;
+  }
+}
